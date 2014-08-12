@@ -11,13 +11,23 @@ response = r.get('https://app.goclio.com/api/v2/activities', headers={'Authoriza
 
 from box.box import Me
 s=Me(token=':token')
+# tell me about the current user
 s.get()
 
 
 from box.box import Folders
 s=Folders(token=':token')
+# get all the users folders
 s.get()
+# look specifically at folder id 2
+# 0 is the default folder relative to the user 0,1,2...
+# each user has these folders
+s.get(id=2)
 
+
+from box.box import Files
+fl=Files(token=':token')
+fl.get()
 ```
 
 
