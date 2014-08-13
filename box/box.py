@@ -77,8 +77,8 @@ class BaseApi(object):
     def put(self, files=None, **kwargs):
         return self.process(response=self.r.put(self.endpoint(action='put'), headers=self.headers(), files=files, data=self.wrap_namespace(**kwargs)))
 
-    # def patch(self, **kwargs):
-    #     return self.process(response=self.r.patch(self.endpoint(action='patch'), headers=self.headers(), data=self.wrap_namespace(**kwargs)))
+    def options(self, **kwargs):
+        return self.process(response=self.r.options(self.endpoint(action='list')))
 
     def delete(self, **kwargs):
         return self.process(response=self.r.delete(self.endpoint(action='delete'), headers=self.headers(), params=kwargs))
