@@ -15,7 +15,7 @@ s.get()
 from box.box import Folders
 s=Folders(token=':token')
 # get all the users folders
-s.get()
+s.get(id=0)
 # look specifically at folder id 2
 # 0 is the default folder relative to the user 0,1,2...
 # each user has these folders
@@ -25,6 +25,14 @@ s.get(id=2)
 from box.box import Files
 fl=Files(token=':token')
 fl.get()
+
+#
+# Get a files Tasks
+#
+from box.box import Files
+fl=Files(token='hyTK09yBfIBo8JYfHpo5jxk0rDfjCHKL', id=19919416715)  # provide the file :id
+fl.tasks()  # list tasks
+#fl.create_task()  # not ready need integration with contacts
 ```
 
 
