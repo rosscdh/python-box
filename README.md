@@ -5,10 +5,6 @@ Python Client for box api (2014)
 
 
 ```
-import requests as r
-response = r.get('https://app.goclio.com/api/v2/activities', headers={'Authorization': 'Bearer :token'})
-
-
 from box.box import Me
 s=Me(token=':token')
 # tell me about the current user
