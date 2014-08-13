@@ -5,15 +5,12 @@ Python Client for box api (2014)
 
 
 ```
-import requests as r
-response = r.get('https://app.goclio.com/api/v2/activities', headers={'Authorization': 'Bearer :token'})
-
-
 from box.box import Me
 s=Me(token=':token')
 # tell me about the current user
 s.get()
 
+> {u'status': u'active', u'max_upload_size': 2147483648, u'name': u"Me McLastName", u'language': u'en', u'created_at': u'2014-05-16T00:13:13-07:00', u'address': u'', u'modified_at': u'2014-08-12T08:37:19-07:00', u'phone': u'+49555555555', u'avatar_url': u'https://app.box.com/api/avatar/large/216350218', u'space_used': 112950, u'space_amount': 10737418240, u'timezone': u'Europe/London', u'login': u'me@example.com', u'type': u'user', u'id': u'216350219', u'job_title': u'CTO'}
 
 from box.box import Folders
 s=Folders(token=':token')
@@ -31,12 +28,12 @@ fl.get()
 ```
 
 
-Refresh a token
+Refresh a token - Django using python-social-auth
 
 ```
-social_auth = UserSocialAuth.objects.last()
-
-updated_data = social_auth.get_backend_instance().refresh_token(token=':refresh_token_from_social_auth')
+social_auth = UserSocialAuth.objects.filter(provider='box').last()
+refresh_token = social_auth.extra_data.get('refresh_token')
+updated_data = social_auth.get_backend_instance().refresh_token(token=refresh_token)
 
 social_auth.extra_data.update(updated_data)
 social_auth.save()
