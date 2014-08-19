@@ -152,3 +152,8 @@ class UploadFiles(BaseApi):
     def endpoint(self, action, *args, **kwargs):
         uri = self.base_url.get('upload')
         return urlparse.urljoin(uri, self.parse_uri, *args, **kwargs)
+
+
+class Events(BaseApi):
+    uri = 'events/:id'
+
